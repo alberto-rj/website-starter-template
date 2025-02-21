@@ -1,0 +1,26 @@
+@use '../../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: $options-layout__can-set-modifier,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'align-self';
+$-declarations: (
+  mixins: (
+    $-short-name,
+  ),
+  values: (
+    baseline,
+    center,
+    end,
+    flex-end,
+    flex-start,
+    start,
+    stretch,
+  ),
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

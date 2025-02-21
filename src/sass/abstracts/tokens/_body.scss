@@ -1,0 +1,17 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+
+$body__font-family: $font-family__base;
+$body__font-size: font-size__get(400);
+$body__font-weight: font-weight__get(normal);
+$body__letter-spacing: 0;
+$body__line-height: 1.5;
+$body__word-spacing: 0;
+$body__word-wrap: break-word;
+$body__color: color-scheme__get(primary, 800);
+$body__background-color: color-scheme__get(neutral, 100);
+$body__background-image: none;
+
+$body-paragraph__max-inline-size: 100%;
+
+$body-blockquote__max-inline-size: 100%;

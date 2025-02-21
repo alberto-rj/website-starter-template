@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'options' as *;
+
+$box-shadow__options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+$box-shadow__values: (
+  1: (
+    0px 6px 5px rgb(0, 0, 0, 0.012),
+    0px 22px 18px rgb(0, 0, 0, 0.018),
+    0px 100px 80px rgb(0, 0, 0, 0.03),
+  ),
+  2: (
+    0px 6px 5px rgb(0, 0, 0, 0.016),
+    0px 22px 18px rgb(0, 0, 0, 0.024),
+    0px 100px 80px rgb(0, 0, 0, 0.04),
+  ),
+  3: (
+    0px 6px 5px rgb(0, 0, 0, 0.02),
+    0px 22px 18px rgb(0, 0, 0, 0.03),
+    0px 100px 80px rgb(0, 0, 0, 0.05),
+  ),
+  4: (
+    0px 6px 5px rgb(0, 0, 0, 0.03),
+    0px 22px 18px rgb(0, 0, 0, 0.042),
+    0px 100px 80px rgb(0, 0, 0, 0.07),
+  ),
+  5: (
+    0px 6px 5px rgb(0, 0, 0, 0.04),
+    0px 22px 18px rgb(0, 0, 0, 0.06),
+    0px 100px 80px rgb(0, 0, 0, 0.1),
+  ),
+);
+
+@function box-shadow__get($key) {
+  @if map.has-key($box-shadow__values, $key) {
+    @return map.get($box-shadow__values, $key);
+  }
+  @error '$key: There is no value pointed by "#{$key}" in the list';
+}

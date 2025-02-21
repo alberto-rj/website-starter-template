@@ -1,0 +1,12 @@
+@use '../../abstracts' as *;
+
+$-options: $font-weight__options;
+$-short-name: 'font';
+$-declarations: (
+  mixins: (
+    'font-weight',
+  ),
+  values: $font-weight__values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

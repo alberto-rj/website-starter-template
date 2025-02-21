@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '../options' as *;
+
+$font-size__options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+$font-size__values: (
+  700: clamp(2.625rem, 2.625vw, 3.5rem),
+  600: clamp(2.25rem, 2.25vw, 2.625rem),
+  500: 1.5rem,
+  400: 1.125rem,
+  300: 1rem,
+  200: 0.875rem,
+);
+
+@function font-size__get($key) {
+  @if not map.has-key($font-size__values, $key) {
+    @error '$key: #{$key} is not key in the $font-size__values map';
+  }
+
+  @return map.get($font-size__values, $key);
+}

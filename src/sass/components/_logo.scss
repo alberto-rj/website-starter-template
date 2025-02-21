@@ -1,0 +1,18 @@
+@use '../abstracts' as *;
+
+.#{$prefix-component} {
+  &logo {
+    fill: $logo__fill;
+    max-width: $logo__max-width;
+
+    &--primary {
+      fill: $logo-primary__fill;
+      max-width: $logo-primary__max-width;
+    }
+
+    &--accent {
+      fill: $logo-accent__fill;
+      max-width: $logo-accent__max-width;
+    }
+  }
+}

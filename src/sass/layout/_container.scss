@@ -1,0 +1,20 @@
+@use '../abstracts' as *;
+
+@use '../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: false,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'container';
+$-declarations: (
+  mixins: (
+    'container',
+  ),
+  values: null,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

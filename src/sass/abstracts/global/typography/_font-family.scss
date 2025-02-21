@@ -1,0 +1,68 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '../options' as *;
+
+$-font-family__sans: (
+  ui-sans-serif,
+  system-ui,
+  sans-serif,
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol',
+  'Noto Color Emoji'
+);
+
+$-font-family__serif: (
+  ui-serif,
+  Georgia,
+  Cambria,
+  'Times New Roman',
+  Times,
+  serif
+);
+
+$-font-family__mono: (
+  ui-monospace,
+  SFMono-Regular,
+  Menlo,
+  Monaco,
+  Consolas,
+  'Liberation Mono',
+  'Courier New',
+  monospace
+);
+
+$font-family__options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+$font-family__display: $-font-family__serif;
+$font-family__base: $-font-family__sans;
+
+$font-family__values: (
+  'sans': (
+    1: $-font-family__sans,
+  ),
+  'serif': (
+    1: $-font-family__serif,
+  ),
+  'mono': (
+    1: $-font-family__mono,
+  ),
+);
+
+@function font-family__get($class, $key) {
+  @if not map.has-key($font-family__values, $class) {
+    @error '$class: #{$class} is not key in the $font-family__values map';
+  }
+
+  @if not map.has-key($font-family__values, $class, $key) {
+    @error '$key: #{$key} is not key in the #{$class} class map';
+  }
+
+  @return map.get($font-family__values, $class, $key);
+}

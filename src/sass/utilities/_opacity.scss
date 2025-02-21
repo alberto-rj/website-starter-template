@@ -1,0 +1,12 @@
+@use '../abstracts' as *;
+
+$-options: $opacity__options;
+$-short-name: 'opacity';
+$-declarations: (
+  mixins: (
+    $-short-name,
+  ),
+  values: $opacity__values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

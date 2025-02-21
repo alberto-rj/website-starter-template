@@ -1,0 +1,5 @@
+@use '../global/color-scheme' as *;
+
+$divider__height: 1px;
+$divider__background-color: color-scheme__get(neutral, 400);
+$divider__opacity: 0.25;

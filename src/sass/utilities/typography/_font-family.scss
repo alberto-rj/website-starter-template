@@ -1,0 +1,28 @@
+@use '../../abstracts' as *;
+
+$-short-name: 'font';
+$-mixin: 'font-family';
+$-options: $font-family__options;
+
+$-declarations: (
+  mixins: (
+    $-mixin,
+  ),
+  values: (
+    'display': $font-family__display,
+    'base': $font-family__base,
+  ),
+);
+
+@include class__generate($-short-name, $-declarations, $-options);
+
+@each $font-type, $font-map in $font-family__values {
+  $-new-short-name: #{$-short-name}-#{$font-type};
+  $-declarations: (
+    mixins: (
+      $-mixin,
+    ),
+    values: $font-map,
+  );
+  @include class__generate($-new-short-name, $-declarations, $-options);
+}

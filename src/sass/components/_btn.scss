@@ -1,0 +1,205 @@
+@use '../abstracts' as *;
+
+.#{$prefix-component} {
+  &btn {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 1;
+    text-decoration: none;
+    font-family: $btn__font-family;
+    font-size: $btn__font-size;
+    font-weight: $btn__font-weight;
+    text-transform: $btn__text-transform;
+    padding: $btn__padding;
+    background-color: $btn__default__background-color;
+    border: $btn__border;
+    border-radius: $btn__border-radius;
+    color: $btn__default__color;
+
+    @include motion__safe {
+      transition: $btn__transition;
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: $btn__hover__background-color;
+      color: $btn__hover__color;
+    }
+
+    &:focus,
+    &:focus-visible {
+      background-color: $btn__focus__background-color;
+      color: $btn__focus__color;
+      outline: $btn__focus__outline;
+      outline-offset: $btn__focus__outline-offset;
+    }
+
+    &--primary {
+      background-color: $btn-primary__default__background-color;
+      color: $btn-primary__default__color;
+
+      &:hover {
+        background-color: $btn-primary__hover__background-color;
+        color: $btn-primary__hover__color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $btn-primary__focus__background-color;
+        color: $btn-primary__focus__color;
+        outline-color: $btn-primary__focus__outline-color;
+      }
+    }
+
+    &--accent {
+      background-color: $btn-accent__default__background-color;
+      color: $btn-accent__default__color;
+
+      &:hover {
+        background-color: $btn-accent__hover__background-color;
+        color: $btn-accent__hover__color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $btn-accent__focus__background-color;
+        color: $btn-accent__focus__color;
+        outline-color: $btn-accent__focus__outline-color;
+      }
+    }
+
+    &--outline {
+      border: $btn-outline__border;
+      background-color: $btn-outline__default__background-color;
+      color: $btn-outline__default__color;
+
+      @include motion__safe {
+        transition: $btn-outline__transition;
+      }
+
+      &:hover {
+        border-color: $btn-outline__hover__border-color;
+        background-color: $btn-outline__hover__background-color;
+        color: $btn-outline__hover__color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        border-color: $btn-outline__focus__border-color;
+        background-color: $btn-outline__focus__background-color;
+        color: $btn-outline__focus__color;
+        outline: $btn-outline__focus__outline;
+        outline-offset: $btn-outline__focus__outline-offset;
+      }
+    }
+
+    &--outline-primary {
+      color: $btn-outline-primary__default__color;
+
+      &:hover {
+        background-color: $btn-outline-primary__hover__background-color;
+        color: $btn-outline-primary__hover__color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $btn-outline-primary__focus__background-color;
+        color: $btn-outline-primary__focus__color;
+        outline-color: $btn-outline-primary__focus__outline-color;
+      }
+    }
+
+    &--outline-accent {
+      color: $btn-outline-accent__default__color;
+
+      &:hover {
+        background-color: $btn-outline-accent__hover__background-color;
+        color: $btn-outline-accent__hover__color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $btn-outline-accent__focus__background-color;
+        color: $btn-outline-accent__focus__color;
+        outline-color: $btn-outline-accent__focus__outline-color;
+      }
+    }
+
+    &--link {
+      background-color: $btn-link__default__background-color;
+      color: $btn-link__default__color;
+
+      @include motion__safe {
+        transition: $btn-link__transition;
+      }
+
+      &:hover {
+        background-color: $btn-link__hover__background-color;
+        color: $btn-link__hover__color;
+        outline: $btn-link__hover__outline;
+        outline-offset: $btn-link__hover__outline-offset;
+        text-decoration: $btn-link__hover__text-decoration;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $btn-link__focus__background-color;
+        color: $btn-link__focus__color;
+        outline: $btn-link__focus__outline;
+        outline-offset: $btn-link__focus__outline-offset;
+        text-decoration: $btn-link__focus__text-decoration;
+      }
+    }
+
+    &--link-primary {
+      background-color: $btn-link-primary__default__background-color;
+      color: $btn-link-primary__default__color;
+
+      &:hover {
+        background-color: $btn-link-primary__hover__background-color;
+        color: $btn-link-primary__hover__color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $btn-link-primary__focus__background-color;
+        color: $btn-link-primary__focus__color;
+        outline-color: $btn-link-primary__focus__outline-color;
+      }
+    }
+
+    &--link-accent {
+      background-color: $btn-link-accent__default__background-color;
+      color: $btn-link-accent__default__color;
+
+      &:hover {
+        background-color: $btn-link-accent__hover__background-color;
+        color: $btn-link-accent__hover__color;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $btn-link-accent__focus__background-color;
+        color: $btn-link-accent__focus__color;
+        outline-color: $btn-link-accent__focus__outline-color;
+      }
+    }
+
+    &--sm {
+      font-size: $btn-sm__font-size;
+    }
+
+    &--md {
+      font-size: $btn-md__font-size;
+    }
+
+    &--lg {
+      font-size: $btn-lg__font-size;
+    }
+  }
+}

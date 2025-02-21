@@ -1,0 +1,50 @@
+@use 'sass:map';
+@use '../../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: $options-layout__can-set-modifier,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'max-w';
+$-mixin: 'max-width';
+$-values: (
+  'min': min-content,
+  'max': max-content,
+  'fit': fit-content,
+  'full': 100%,
+  'none': none,
+  'xs': 20rem,
+  'sm': 24rem,
+  'md': 28rem,
+  'lg': 32rem,
+  'xl': 36rem,
+  'xl-2': 42rem,
+  'xl-3': 48rem,
+  'xl-4': 56rem,
+  'xl-5': 64rem,
+  'xl-6': 72rem,
+  'xl-7': 80rem,
+  'xl-8': 88rem,
+);
+$-values: map.merge($-values, $size__values);
+$-declarations: (
+  mixins: (
+    'max-width',
+  ),
+  values: $-values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);
+
+$-short-name: '#{$-short-name}-screen';
+$-declarations: (
+  mixins: (
+    'max-width',
+  ),
+  values: $screen__values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

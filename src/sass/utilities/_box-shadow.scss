@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+$-options: $box-shadow__options;
+$-short-name: 'shadow';
+$-declarations: (
+  mixins: (
+    'box-shadow',
+  ),
+  values: $box-shadow__values,
+);
+@include class__generate($-short-name, $-declarations, $-options);

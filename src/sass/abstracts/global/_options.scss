@@ -1,0 +1,13 @@
+@use 'prefix' as *;
+
+$options-layout__can-set-prefix: true;
+$options-layout__can-set-modifier: true;
+$options-layout__can-generate-class: true;
+$options-layout__is-component: true;
+$options-layout__prefix: $prefix-layout;
+
+$options-utility__can-set-prefix: true;
+$options-utility__can-set-modifier: false;
+$options-utility__can-generate-class: true;
+$options-utility__is-component: true;
+$options-utility__prefix: $prefix-utility;

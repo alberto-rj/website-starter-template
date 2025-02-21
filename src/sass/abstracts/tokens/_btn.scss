@@ -1,0 +1,165 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+@use '../global/size' as *;
+@use '../global/border-radius' as *;
+@use '../global/outline' as *;
+@use '../global/transition' as *;
+@use '../global/functions' as *;
+
+// default button - base state
+$btn__font-family: inherit;
+$btn__font-size: font-size__get(400);
+$btn__font-weight: font-weight__get(normal);
+$btn__text-transform: none;
+$btn__padding: rem-to-em(size__get(3)) rem-to-em(size__get(6));
+$btn__border: $outline__width solid transparent;
+$btn__border-radius: border-radius__get(default);
+$btn__transition: all $transition__timing-function $transition__duration;
+
+// default button - default state
+$btn__default__background-color: color-scheme__get(neutral, 100);
+$btn__default__color: color-scheme__get(neutral, 700);
+
+// default button - hover state
+$btn__hover__background-color: $btn__default__color;
+$btn__hover__color: $btn__default__background-color;
+
+// default button - focus state
+$btn__focus__background-color: $btn__hover__background-color;
+$btn__focus__color: $btn__hover__color;
+$btn__focus__outline-width: $outline-lg__width;
+$btn__focus__outline-style: $outline__style;
+$btn__focus__outline-color: currentColor;
+$btn__focus__outline-offset: 0;
+$btn__focus__outline: $btn__focus__outline-width $btn__focus__outline-style
+  $btn__focus__outline-color;
+
+// primary button - default state
+$btn-primary__default__background-color: color-scheme__get(primary, 400);
+$btn-primary__default__color: color-scheme__get(neutral, 100);
+
+// primary button - hover state
+$btn-primary__hover__background-color: color-scheme__get(accent, 100);
+$btn-primary__hover__color: color-scheme__get(neutral, 700);
+
+// primary button - focus state
+$btn-primary__focus__background-color: $btn-primary__hover__background-color;
+$btn-primary__focus__color: $btn-primary__hover__color;
+$btn-primary__focus__outline-color: color-scheme__get(primary, 700);
+
+// accent button - default state
+$btn-accent__default__background-color: color-scheme__get(accent, 400);
+$btn-accent__default__color: color-scheme__get(neutral, 700);
+
+// accent button - hover state
+$btn-accent__hover__background-color: color-scheme__get(accent, 200);
+$btn-accent__hover__color: color-scheme__get(neutral, 700);
+
+// accent button - focus state
+$btn-accent__focus__background-color: $btn-accent__hover__background-color;
+$btn-accent__focus__color: $btn-accent__hover__color;
+$btn-accent__focus__outline-color: color-scheme__get(primary, 700);
+
+// outline button - default state
+$btn-outline__border-width: $outline__width;
+$btn-outline__border-style: $outline__style;
+$btn-outline__border-color: currentColor;
+$btn-outline__border: $btn-outline__border-width $btn-outline__border-style
+  $btn-outline__border-color;
+$btn-outline__default__background-color: transparent;
+$btn-outline__default__color: color-scheme__get(neutral, 700);
+$btn-outline__transition: $btn__transition;
+
+// default outline button - hover state
+$btn-outline__hover__border-color: transparent;
+$btn-outline__hover__background-color: color-scheme__get(neutral, 700);
+$btn-outline__hover__color: transparent;
+
+// default outline button - focus state
+$btn-outline__focus__border-color: $btn-outline__hover__border-color;
+$btn-outline__focus__background-color: $btn-outline__hover__background-color;
+$btn-outline__focus__color: $btn-outline__hover__color;
+$btn-outline__focus__outline: $btn__focus__outline-width
+  $btn__focus__outline-style currentColor;
+$btn-outline__focus__outline-offset: -1 * $outline__width;
+
+// primary button - default state
+$btn-outline-primary__default__color: $btn-primary__default__background-color;
+
+// primary outline button - hover state
+$btn-outline-primary__hover__background-color: $btn-primary__default__background-color;
+$btn-outline-primary__hover__color: color-scheme__get(neutral, 100);
+
+// primary outline button - focus state
+$btn-outline-primary__focus__background-color: $btn-outline-primary__hover__background-color;
+$btn-outline-primary__focus__color: $btn-outline-primary__hover__color;
+$btn-outline-primary__focus__outline-color: currentColor;
+
+// accent button - default state
+$btn-outline-accent__default__color: $btn-accent__default__background-color;
+
+// accent outline button - hover state
+$btn-outline-accent__hover__background-color: $btn-accent__default__background-color;
+$btn-outline-accent__hover__color: color-scheme__get(neutral, 100);
+
+// accent outline button - focus state
+$btn-outline-accent__focus__border-color: $btn-outline-accent__hover__color;
+$btn-outline-accent__focus__background-color: $btn-outline-accent__hover__background-color;
+$btn-outline-accent__focus__color: $btn-outline-accent__hover__color;
+$btn-outline-accent__focus__outline-color: currentColor;
+
+// default link button - default state
+$btn-link__default__background-color: transparent;
+$btn-link__default__color: color-scheme__get(neutral, 700);
+$btn-link__transition: $btn__transition;
+
+// link button - hover state
+$btn-link__hover__background-color: transparent;
+$btn-link__hover__color: color-scheme__get(neutral, 700);
+$btn-link__hover__outline: transparent;
+$btn-link__hover__outline-offset: 0;
+$btn-link__hover__text-decoration: none;
+
+// default link button - focus state
+$btn-link__focus__background-color: transparent;
+$btn-link__focus__color: color-scheme__get(neutral, 700);
+$btn-link__focus__outline: $btn__focus__outline-width currentColor;
+$btn-link__focus__outline-offset: 0;
+$btn-link__focus__text-decoration: none;
+
+// primary link button - default state
+$btn-link-primary__default__color: color-scheme__get(primary, 400);
+$btn-link-primary__default__background-color: $btn-link__default__background-color;
+
+// primary link button - hover state
+$btn-link-primary__hover__color: $btn-link-primary__default__color;
+$btn-link-primary__hover__background-color: color-scheme__get(primary, 100);
+$btn-link-primary__hover__outline-color: currentColor;
+
+// primary link button - focus state
+$btn-link-primary__focus__color: $btn-link-primary__default__color;
+$btn-link-primary__focus__background-color: $btn-link-primary__hover__background-color;
+$btn-link-primary__focus__outline-color: currentColor;
+
+// accent link button - default state
+$btn-link-accent__default__color: $btn-accent__default__background-color;
+$btn-link-accent__default__background-color: $btn-link__default__background-color;
+
+// accent link button - hover state
+$btn-link-accent__hover__color: $btn-link-accent__default__color;
+$btn-link-accent__hover__background-color: color-scheme__get(accent, 100);
+$btn-link-accent__hover__outline-color: currentColor;
+
+// accent link button - focus state
+$btn-link-accent__focus__color: $btn-link-accent__hover__color;
+$btn-link-accent__focus__background-color: $btn-link-accent__hover__background-color;
+$btn-link-accent__focus__outline-color: currentColor;
+
+// small button
+$btn-sm__font-size: font-size__get(200);
+
+// medium button
+$btn-md__font-size: font-size__get(500);
+
+// large button
+$btn-lg__font-size: font-size__get(600);

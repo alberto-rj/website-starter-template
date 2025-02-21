@@ -1,0 +1,48 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:meta';
+@use 'functions' as *;
+
+$-list: ();
+
+@mixin set($short-name, $declarations) {
+  $item: (
+    short-name: $short-name,
+    declarations: $declarations,
+  );
+  $-list: list.append($-list, $item) !global;
+}
+
+@function get($class) {
+  @each $item in $-list {
+    $short-name: map.get($item, short-name);
+    $declarations: map.get($item, declarations);
+
+    $mixins: map.get($declarations, mixins);
+    $values: map.get($declarations, values);
+
+    @if $values == null {
+      @if $class == $short-name {
+        @return (mixins: $mixins, value: null);
+      }
+    } @else if meta.type-of($values) == list {
+      @each $value in $values {
+        $new-class: class__build-list($short-name, $value);
+
+        @if $class == $new-class {
+          @return (mixins: $mixins, value: $value);
+        }
+      }
+    } @else {
+      @each $key, $value in $values {
+        $new-class: class__build-map($short-name, $key, $value);
+
+        @if $class == $new-class {
+          @return (mixins: $mixins, value: $value);
+        }
+      }
+    }
+  }
+
+  @return null;
+}

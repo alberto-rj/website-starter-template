@@ -1,0 +1,90 @@
+@use '../abstracts' as *;
+
+.#{$prefix-component} {
+  &form {
+    display: $form__layout;
+    gap: $form__gap;
+    font-family: $form__font-family;
+    font-size: $form__font-size;
+    font-weight: $form__font-weight;
+    line-height: $form__line-height;
+    letter-spacing: $form__letter-spacing;
+    text-transform: $form__text-transform;
+    background-color: $form__background-color;
+    border: $form__border;
+    border-radius: $form__border-radius;
+    padding: $form__padding;
+    color: $form__color;
+
+    &__field {
+      display: $form-field__layout;
+      gap: $form-field__gap;
+    }
+
+    &__label {
+      font-family: $form-label__font-family;
+      font-size: $form-label__font-size;
+      font-weight: $form-label__font-weight;
+      line-height: $form-label__line-height;
+      letter-spacing: $form-label__letter-spacing;
+      text-transform: $form-label__text-transform;
+      background-color: $form-label__background-color;
+      border: $form-label__border;
+      border-radius: $form-label__border-radius;
+      padding: $form-label__padding;
+      color: $form-label__color;
+    }
+
+    // form control
+    &__control {
+      // form control base styles - start
+      font-family: $form-control__font-family;
+      font-weight: $form-control__font-weight;
+      text-transform: $form-control__text-transform;
+      // form control base styles - end
+
+      // form control default state - start
+      border: $form-control__default-state__border;
+      border-radius: $form-control__default-size__border-radius;
+      outline: $form-control__default-state__outline;
+      outline-offset: $form-control__default-state__outline-offset;
+      background-color: $form-control__default-state__background-color;
+      color: $form-control__default-state__color;
+      // form control default state - end
+
+      // form control default size - start
+      border: $form-control__default-size__border;
+      border-radius: $form-control__default-size__border-radius;
+      font-size: $font-control__default-size__font-size;
+      letter-spacing: $form-control__default-size__letter-spacing;
+      line-height: $form-control__default-size__line-height;
+      padding: $form-control__default-size__padding;
+      // form control default size - start
+
+      // form control focus state
+      &:focus,
+      &:focus-visible {
+        border: $form-control__focus__border;
+        outline: $form-control__focus__outline;
+        outline-offset: $form-control__focus__outline-offset;
+        background-color: $form-control__focus__background-color;
+        color: $form-control__focus__color;
+      }
+
+      // form control small size
+      &--sm {
+        font-size: $font-control-sm__font-size;
+      }
+
+      // form control me__ium size
+      &--md {
+        font-size: $font-control-md__font-size;
+      }
+
+      // form control la__ge size
+      &--lg {
+        font-size: $font-control-lg__font-size;
+      }
+    }
+  }
+}

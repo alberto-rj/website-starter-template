@@ -1,0 +1,19 @@
+@use '../abstracts' as *;
+
+.#{$prefix-component} {
+  &card {
+    border-radius: $card__border-radius;
+    box-shadow: $card__box-shadow;
+    display: grid;
+    gap: $card__flow-spacing;
+    padding: $card__body-padding;
+    background-color: $card__background-color;
+    font-family: $card__font-family;
+    color: $card__color;
+    line-height: $card__line-height;
+
+    &__heading {
+      @include heading($card-heading__font-size, $card-heading__default-color);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+// project prefix
+$prefix-project: '';
+
+// component prefix
+$prefix-component: '#{$prefix-project}c-';
+
+// layout prefix
+$prefix-layout: '#{$prefix-project}l-';
+
+// utility prefix
+$prefix-utility: '#{$prefix-project}u-';

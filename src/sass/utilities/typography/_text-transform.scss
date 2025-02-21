@@ -1,0 +1,22 @@
+@use '../../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+$-short-name: 'text';
+$-declarations: (
+  mixins: (
+    'text-transform',
+  ),
+  values: (
+    uppercase,
+    lowercase,
+    capitalize,
+  ),
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

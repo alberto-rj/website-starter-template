@@ -1,0 +1,31 @@
+@use '../abstracts' as *;
+
+.#{$prefix-component} {
+  &nav {
+    background-color: $nav__background-color;
+    color: $nav__color;
+    font-family: $nav__font-family;
+    font-size: $nav__font-size;
+    font-weight: $nav__font-weight;
+    letter-spacing: $nav__letter-spacing;
+    line-height: $nav__line-height;
+    text-transform: $nav__link-text-transform;
+
+    &__link {
+      color: $nav-link__default__color;
+      text-decoration: $nav-link__default__text-decoration;
+
+      &:hover,
+      &:focus {
+        color: $nav-link__focus__color;
+        text-decoration: $nav-link__focus__text-decoration;
+      }
+
+      &:focus,
+      &:focus-visible {
+        outline: $nav-link__focus__outline;
+        outline-offset: $nav-link__focus__outline-offset;
+      }
+    }
+  }
+}

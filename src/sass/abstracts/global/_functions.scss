@@ -1,0 +1,101 @@
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:map';
+
+// px-to-em
+@function px-to-em($px-value) {
+  @if meta.type-of($px-value) !=number {
+    @error "$px-value: #{$px-value} must be a number";
+  } @else if not math.is-unitless($px-value) {
+    @error "$px-value: #{$px-value} must have no unit";
+  } @else {
+    @return math.div($px-value, 16) * 1em;
+  }
+}
+
+// px-to-rem
+@function px-to-rem($px-value) {
+  @if meta.type-of($px-value) !=number {
+    @error "$px-value: #{$px-value} must be a number";
+  } @else if not math.is-unitless($px-value) {
+    @error "$px-value: #{$px-value} must have no unit";
+  } @else {
+    @return math.div($px-value, 16) * 1rem;
+  }
+}
+
+// rem-to-em
+@function rem-to-em($rem-value) {
+  @if meta.type-of($rem-value) !=number {
+    @error "$rem-value: #{$rem-value} must be a number";
+  } @else if math.unit($rem-value) != 'rem' {
+    @error "$rem-value: #{$rem-value} must be in the rem unit";
+  }
+
+  @return math.div($rem-value, 1rem) * 1em;
+}
+
+// em-to-em
+@function em-to-rem($em-value) {
+  @if meta.type-of($em-value) !=number {
+    @error "$em-value: #{$em-value} must be a number";
+  } @else if math.unit($em-value) != 'em' {
+    @error "$em-value: #{$em-value} must be in the em unit";
+  }
+
+  @return math.div($em-value, 1em) * 1rem;
+}
+
+@function map__get-grid-items($count) {
+  $items: ();
+
+  @for $num from 1 to $count {
+    $key: #{$num}\/#{$count};
+    $value: math.div($num, $count) * 100%;
+    $items: map.set($items, $key, $value);
+  }
+
+  @return $items;
+}
+
+@function map__get-negatives($map) {
+  $new-map: ();
+  @each $key, $value in $map {
+    @if $key != 0 {
+      $new-key: 'n#{$key}';
+      $new-value: -1 * $value;
+      $new-map: map.set($new-map, $new-key, $new-value);
+    }
+  }
+  @return $new-map;
+}
+
+@function map__get-default($map, $key, $default) {
+  @if not map.has-key($map, $key) {
+    @return $default;
+  } @else {
+    @return map.get($map, $key);
+  }
+}
+
+@function class__set-prefix($short-name, $options) {
+  $can-set-prefix: map__get-default($options, 'can-set-prefix', true);
+  $prefix: map__get-default($options, 'prefix', '');
+
+  @if $can-set-prefix {
+    @return #{$prefix}#{$short-name};
+  }
+
+  @return #{$short-name};
+}
+
+@function class__build-list($name-space, $item) {
+  @return '#{$name-space}-#{$item}';
+}
+
+@function class__build-map($name-space, $key, $value) {
+  @if $key == default {
+    @return $name-space;
+  }
+  @return class__build-list($name-space, $key);
+}

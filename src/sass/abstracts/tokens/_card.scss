@@ -1,0 +1,19 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+@use '../global/size' as *;
+@use '../global/border-radius' as *;
+@use '../global/box-shadow' as *;
+@use '../global/functions' as *;
+@use 'body' as *;
+
+$card__border-radius: 0;
+$card__box-shadow: none;
+$card__flow-spacing: size__get(2);
+$card__body-padding: 0;
+$card__background-color: transparent;
+$card__color: $body__color;
+$card__font-family: inherit;
+$card__line-height: 1.75;
+
+$card-heading__font-size: font-size__get(500);
+$card-heading__default-color: color-scheme__get(neutral, 700);

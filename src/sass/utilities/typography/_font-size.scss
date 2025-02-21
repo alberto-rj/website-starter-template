@@ -1,0 +1,12 @@
+@use '../../abstracts' as *;
+
+$-options: $font-size__options;
+$-short-name: 'text';
+$-declarations: (
+  mixins: (
+    'font-size',
+  ),
+  values: $font-size__values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

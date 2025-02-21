@@ -1,0 +1,6 @@
+@use '../global/size' as *;
+
+$container__padding-inline: size__get(4);
+$container__max-width: 60rem;
+$container-narrow__max-width: 40rem;
+$container-wide__max-width: 75rem;

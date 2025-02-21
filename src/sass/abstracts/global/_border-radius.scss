@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use 'size' as *;
+@use 'functions' as *;
+@use 'options' as *;
+
+$border-radius__options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+$border-radius__values: (
+  'default': rem-to-em(size__get(1)),
+  'none': 0,
+  'sm': rem-to-em(size__get(0\.5)),
+  'md': rem-to-em(size__get(1\.5)),
+  'lg': rem-to-em(size__get(2)),
+  'xl': rem-to-em(size__get(3)),
+  'xl-2': rem-to-em(size__get(4)),
+  'full': 50%,
+);
+
+@function border-radius__get($key) {
+  @if map.has-key($border-radius__values, $key) {
+    @return map.get($border-radius__values, $key);
+  }
+  @error '$key: There is no value pointed by "#{$key}" in the list';
+}

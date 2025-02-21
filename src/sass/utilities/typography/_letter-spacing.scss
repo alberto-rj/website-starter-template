@@ -1,0 +1,12 @@
+@use '../../abstracts' as *;
+
+$-options: $letter-spacing__options;
+$-short-name: 'tracking';
+$-declarations: (
+  mixins: (
+    'letter-spacing',
+  ),
+  values: $letter-spacing__values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

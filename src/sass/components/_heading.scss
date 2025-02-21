@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.#{$prefix-component} {
+  &heading-1 {
+    @include heading($heading-1__font-size, $heading-1__color);
+  }
+
+  &heading-2 {
+    @include heading($heading-2__font-size, $heading-2__color);
+  }
+
+  &heading-3 {
+    @include heading($heading-3__font-size, $heading-3__color);
+  }
+}

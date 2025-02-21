@@ -1,0 +1,37 @@
+@use 'sass:meta';
+@use 'sass:map';
+@use '../abstracts' as *;
+
+:root {
+  @each $shade-type, $shade-map in $color-scheme__values {
+    @each $shade-name, $shade-value in $shade-map {
+      --#{$shade-type}-#{$shade-name}: #{$shade-value};
+    }
+  }
+
+  @if $color-scheme__enable-preferred-dark-mode {
+    @include color-scheme__dark {
+      @each $shade-type, $shade-map in $color-scheme__dark-values {
+        @each $shade-name, $shade-value in $shade-map {
+          --#{$shade-type}-#{$shade-name}: #{$shade-value};
+        }
+      }
+    }
+  }
+
+  &[data-theme='1'] {
+    @each $shade-type, $shade-map in $color-scheme__light-values {
+      @each $shade-name, $shade-value in $shade-map {
+        --#{$shade-type}-#{$shade-name}: #{$shade-value};
+      }
+    }
+  }
+
+  &[data-theme='2'] {
+    @each $shade-type, $shade-map in $color-scheme__dark-values {
+      @each $shade-name, $shade-value in $shade-map {
+        --#{$shade-type}-#{$shade-name}: #{$shade-value};
+      }
+    }
+  }
+}

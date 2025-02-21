@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style-type: none;
+}
+
+iframe,
+video,
+picture,
+img,
+svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+  object-position: top center;
+}
+
+form {
+  display: block;
+  width: 100%;
+  inline-size: 100%;
+}
+
+button {
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  width: 100%;
+  inline-size: 100%;
+}
+
+input,
+textarea {
+  width: 100%;
+  inline-size: 100%;
+}

@@ -1,0 +1,10 @@
+@use '../../abstracts' as *;
+
+$-options: $line-height__options;
+$-short-name: 'leading';
+$-declarations: (
+  mixins: (
+    'line-height',
+  ),
+  values: $line-height__values,
+);

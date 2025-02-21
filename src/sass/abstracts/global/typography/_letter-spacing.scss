@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../options' as *;
+
+$letter-spacing__options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+$letter-spacing__values: (
+  'tighter': -0.05em,
+  'tight': -0.025em,
+  'normal': 0em,
+  'wide': 0.025em,
+  'wider': 0.05em,
+  'widest': 0.1em,
+);
+
+@function letter-spacing__get($key) {
+  @if not map.has-key($letter-spacing__values, $key) {
+    @error '$key: #{$key} is not key in the $letter-spacing__values map';
+  }
+
+  @return map.get($letter-spacing__values, $key);
+}

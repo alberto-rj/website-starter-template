@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '../options' as *;
+
+$font-weight__options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+$font-weight__values: (
+  'thin': 100,
+  'extralight': 200,
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  'extrabold': 800,
+  'black': 900,
+);
+
+@function font-weight__get($key) {
+  @if not map.has-key($font-weight__values, $key) {
+    @error '$key: #{$key} is not key in the $font-weight__values map';
+  }
+
+  @return map.get($font-weight__values, $key);
+}

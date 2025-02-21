@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use '../../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: $options-layout__can-set-modifier,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'min-w';
+$-values: (
+  'min': min-content,
+  'max': max-content,
+  'fit': fit-content,
+  'full': 100%,
+);
+$-values: map.merge($-values, $size__values);
+$-declarations: (
+  mixins: (
+    'min-width',
+  ),
+  values: $-values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

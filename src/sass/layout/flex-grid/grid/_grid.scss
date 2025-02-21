@@ -1,0 +1,51 @@
+@use '../../../abstracts' as *;
+@use 'sass:map';
+
+@function map__grid-template-values($prefix) {
+  $items: (
+    'none': none,
+    'subgrid': subgrid,
+  );
+
+  @for $i from 1 through 12 {
+    $items: map.set($items, '#{$prefix}-#{$i}', repeat($i, minmax(0, 1fr)));
+  }
+
+  @return $items;
+}
+
+@function map__grid-auto-values() {
+  $items: (
+    'auto': auto,
+    'min': min-content,
+    'max': max-content,
+    'fr': minmax(0, 1fr),
+  );
+
+  @return $items;
+}
+
+@function map__grid-item-span-values() {
+  $items: (
+    'auto': auto,
+    'span-full': 1/-1,
+  );
+
+  @for $i from 1 through 12 {
+    $items: map.set($items, 'span-#{$i}', span $i / span $i);
+  }
+
+  @return $items;
+}
+
+@function map__grid-item-values($prefix) {
+  $items: (
+    '#{$prefix}-auto': auto,
+  );
+
+  @for $i from 1 through 12 {
+    $items: map.set($items, '#{$prefix}-#{$i}', $i);
+  }
+
+  @return $items;
+}

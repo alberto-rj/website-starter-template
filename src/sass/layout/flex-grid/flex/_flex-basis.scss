@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use '../../../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: $options-layout__can-set-modifier,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'basis';
+$-mixin: 'flex-basis';
+$-values: (
+  'full': 100%,
+  'auto': auto,
+);
+$-values: map.merge($-values, $size__values);
+$-values: map.merge($-values, map__get-grid-items(2));
+$-values: map.merge($-values, map__get-grid-items(3));
+$-values: map.merge($-values, map__get-grid-items(4));
+$-values: map.merge($-values, map__get-grid-items(5));
+$-values: map.merge($-values, map__get-grid-items(6));
+$-values: map.merge($-values, map__get-grid-items(12));
+$-declarations: (
+  mixins: (
+    'flex-basis',
+  ),
+  values: $-values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

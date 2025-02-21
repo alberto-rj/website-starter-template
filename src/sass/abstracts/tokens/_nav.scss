@@ -1,0 +1,24 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+@use '../global/size' as *;
+@use '../global/outline' as *;
+
+$nav__background-color: transparent;
+$nav__color: color-scheme__get(neutral, 700);
+$nav__font-family: inherit;
+$nav__font-size: inherit;
+$nav__font-weight: inherit;
+$nav__letter-spacing: 0;
+$nav__line-height: 1.1;
+
+$nav__gap: clamp(size__get(8), 6vw, size__get(16));
+
+$nav__link-text-transform: initial;
+
+$nav-link__default__color: $nav__color;
+$nav-link__default__text-decoration: none;
+
+$nav-link__focus__color: color-scheme__get(accent, 700);
+$nav-link__focus__text-decoration: underline;
+$nav-link__focus__outline: $outline-lg__width $outline__style $outline__color;
+$nav-link__focus__outline-offset: 0;

@@ -1,0 +1,11 @@
+@use '../global/color-scheme' as *;
+@use '../global/size' as *;
+
+$logo__fill: color-scheme__get(primary, 400);
+$logo__max-width: size__get(60);
+
+$logo-primary__fill: color-scheme__get(primary, 200);
+$logo-primary__max-width: $logo__max-width;
+
+$logo-accent__fill: color-scheme__get(accent, 400);
+$logo-accent__max-width: $logo__max-width;

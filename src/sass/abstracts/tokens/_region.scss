@@ -1,0 +1,9 @@
+@use '../global/size' as *;
+
+$region__values: (
+  'default': clamp(3.75rem, 10vh, 5rem),
+  'sm': clamp(1.875rem, 5vh, 2.5rem),
+  'md': clamp(5.625rem, 15vh, 7.5rem),
+  'lg': clamp(7.5rem, 20vh, 10rem),
+  'xl': clamp(13.125rem, 35vh, 17.5rem),
+);

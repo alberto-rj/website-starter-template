@@ -1,0 +1,13 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+@use '../global/outline' as *;
+
+$link__color: color-scheme__get(neutral, 400);
+$link__decoration: none;
+$link__outline: none;
+$link__outline-offset: 0;
+
+$link__focus__color: color-scheme__get(primary, 700);
+$link__focus__decoration: underline;
+$link__focus__outline: $outline-lg__width $outline__style $outline__color;
+$link__focus__outline-offset: 0;

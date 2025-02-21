@@ -1,0 +1,4 @@
+@use 'color-scheme' as *;
+
+$selection__color: color-scheme__get(neutral, 100);
+$selection__background-color: color-scheme__get(accent, 500);

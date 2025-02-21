@@ -1,0 +1,13 @@
+@use '../../abstracts' as *;
+
+$-options: $border-radius__options;
+$-short-name: 'rounded-r';
+$-declarations: (
+  mixins: (
+    'border-top-right-radius',
+    'border-bottom-right-radius',
+  ),
+  values: $border-radius__values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

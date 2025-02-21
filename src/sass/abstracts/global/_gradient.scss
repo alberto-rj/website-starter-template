@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use 'options' as *;
+
+$gradient__options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+$gradient__values: (
+  1: (
+    none,
+  ),
+  2: (
+    none,
+  ),
+  3: (
+    none,
+  ),
+  4: (
+    none,
+  ),
+);
+
+@function gradient__get($key) {
+  @if map.has-key($gradient__values, $key) {
+    @return map.get($gradient__values, $key);
+  }
+  @error '$key: There is no value pointed by "#{$key}" in the list';
+}

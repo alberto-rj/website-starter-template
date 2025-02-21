@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+.#{$prefix-component} {
+  &main-header {
+    background-color: $main-header__background-color;
+    color: $main-header__color;
+
+    &__content {
+      display: flex;
+      flex-wrap: $main-header-content__flex-wrap;
+      justify-content: $main-header-content__justify-content;
+      align-items: $main-header-content__align-items;
+      gap: $main-header-content__min-gap;
+    }
+  }
+}

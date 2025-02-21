@@ -1,0 +1,60 @@
+@use '../abstracts' as *;
+
+html {
+  @include motion__safe {
+    scroll-behavior: smooth;
+  }
+}
+
+:focus,
+:focus-visible {
+  outline: $outline__width $outline__style $outline__color;
+  outline-offset: $outline__offset;
+}
+
+::selection {
+  background-color: $selection__background-color;
+  color: $selection__color;
+}
+
+body {
+  font-family: $body__font-family;
+  font-size: $body__font-size;
+  font-weight: $body__font-weight;
+  letter-spacing: $body__letter-spacing;
+  line-height: $body__line-height;
+  word-spacing: $body__word-spacing;
+  word-wrap: $body__word-wrap;
+  color: $body__color;
+  background-color: $body__background-color;
+  background-image: $body__background-image;
+}
+
+p {
+  max-width: $body-paragraph__max-inline-size;
+  max-inline-size: $body-paragraph__max-inline-size;
+}
+
+blockquote {
+  max-width: $body-blockquote__max-inline-size;
+  max-inline-size: $body-blockquote__max-inline-size;
+}
+
+a {
+  color: $link__color;
+  text-decoration: $link__decoration;
+  outline: $link__outline;
+  outline-offset: $link__outline-offset;
+}
+
+a:hover,
+a:focus {
+  color: $link__focus__color;
+  text-decoration: $link__focus__decoration;
+}
+
+a:focus,
+a:focus-visible {
+  outline: $link__focus__outline;
+  outline-offset: $link__focus__outline-offset;
+}

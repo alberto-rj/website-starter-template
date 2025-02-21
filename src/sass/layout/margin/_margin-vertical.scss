@@ -1,0 +1,22 @@
+@use '../../abstracts' as *;
+@use 'sass:map';
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: $options-layout__can-set-modifier,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'my';
+$-values: $size__values;
+$-values: map.merge($-values, map__get-negatives($size__values));
+$-declarations: (
+  mixins: (
+    'margin-top',
+    'margin-bottom',
+  ),
+  values: $-values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

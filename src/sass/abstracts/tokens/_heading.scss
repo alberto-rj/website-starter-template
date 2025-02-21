@@ -1,0 +1,31 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+@use '../global/size' as *;
+
+$heading__font-family: $font-family__display;
+$heading__font-weight: font-weight__bold(bold);
+$heading__letter-spacing: 0;
+$heading__line-height: 1.1;
+$heading__text-transform: initial;
+$heading__color: color-scheme__get(neutral, 700);
+
+$heading-1__font-size: font-size__get(700);
+$heading-1__color: $heading__color;
+
+$heading-2__font-size: font-size__get(600);
+$heading-2__color: $heading__color;
+
+$heading-3__font-size: font-size__get(500);
+$heading-3__color: $heading__color;
+
+@mixin heading($fs, $color: $heading-color) {
+  font-size: $fs;
+  color: $color;
+
+  font-family: $heading__font-family;
+  font-weight: $heading__font-weight;
+  letter-spacing: $heading__letter-spacing;
+  line-height: $heading__line-height;
+  text-transform: $heading__text-transform;
+  word-wrap: break-word;
+}

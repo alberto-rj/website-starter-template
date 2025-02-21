@@ -1,0 +1,21 @@
+@use '../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-utility__can-generate-class,
+  is-component: $options-utility__is-component,
+  can-set-modifier: $options-utility__can-set-modifier,
+  can-set-prefix: $options-utility__can-set-prefix,
+  prefix: $options-utility__prefix,
+);
+
+@each $shade-type, $shade-map in $color-scheme__values {
+  $-short-name: 'bg-#{$shade-type}';
+  $-declarations: (
+    mixins: (
+      'background-color',
+    ),
+    values: color-scheme__get-shades($shade-type),
+  );
+
+  @include class__generate($-short-name, $-declarations, $-options);
+}

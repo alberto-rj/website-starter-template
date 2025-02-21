@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '../../abstracts' as *;
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: $options-layout__can-set-modifier,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'max-h';
+$-mixin: 'max-height';
+$-values: (
+  'full': 100%,
+  'screen': 100vh,
+  'svh': 100svh,
+  'lvh': 100lvh,
+  'dvh': 100dvh,
+  'fit': fit-content,
+  'min': min-content,
+  'max': max-content,
+  'auto': auto,
+  'none': none,
+);
+$-values: map.merge($-values, $size__values);
+$-declarations: (
+  mixins: (
+    'max-height',
+  ),
+  values: $-values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

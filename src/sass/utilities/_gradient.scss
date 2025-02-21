@@ -1,0 +1,12 @@
+@use '../abstracts' as *;
+
+$-options: $gradient__options;
+$-short-name: 'gradient';
+$-declarations: (
+  mixins: (
+    'background-image',
+  ),
+  values: $gradient__values,
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

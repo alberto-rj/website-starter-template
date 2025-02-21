@@ -1,0 +1,631 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:map';
+@use 'declaration-storage';
+@use 'functions' as *;
+@use 'screen' as *;
+@use '../tokens/container' as *;
+
+@mixin class__generate($short-name, $declarations, $options) {
+  $can-generate-class: map__get-default($options, 'can-generate-class', true);
+  $is-component: map__get-default($options, 'is-component', true);
+  $can-set-modifier: map__get-default($options, 'can-set-modifier', false);
+  $short-name: class__set-prefix($short-name, $options);
+
+  @if $can-generate-class {
+    @include class__build($short-name, $declarations);
+  }
+
+  @if $can-generate-class and $is-component {
+    @include declaration-storage.set($short-name, $declarations);
+  }
+
+  @if $can-generate-class and $can-set-modifier {
+    @include modifier__set($short-name, $declarations);
+  }
+}
+
+@mixin class__build($short-name, $declarations) {
+  $mixins: map.get($declarations, mixins);
+  $values: map.get($declarations, values);
+
+  @if $values == null {
+    $class: $short-name;
+    .#{$class} {
+      @each $mixin in $mixins {
+        @include meta.apply(meta.get-mixin($mixin));
+      }
+    }
+  } @else if meta.type-of($values) == list {
+    @each $value in $values {
+      $class: class__build-list($short-name, $value);
+      .#{$class} {
+        @each $mixin in $mixins {
+          @include meta.apply(meta.get-mixin($mixin), $value);
+        }
+      }
+    }
+  } @else {
+    @each $key, $value in $values {
+      $class: class__build-map($short-name, $key, $value);
+      .#{$class} {
+        @each $mixin in $mixins {
+          @include meta.apply(meta.get-mixin($mixin), $value);
+        }
+      }
+    }
+  }
+}
+
+@mixin class__compose($classes...) {
+  @each $class in $classes {
+    $declaration: declaration-storage.get($class);
+    @debug $class;
+    @debug $declaration;
+
+    @if $declaration == null {
+      @error '$class: "#{$class}" cannot be used as a component';
+    }
+
+    @include class__set-declaration($declaration);
+  }
+}
+
+@mixin class__set-declaration($declaration) {
+  $mixins: map.get($declaration, mixins);
+  $value: map.get($declaration, value);
+  @each $mixin in $mixins {
+    @if $value == null {
+      @include meta.apply(meta.get-mixin($mixin));
+    } @else {
+      @include meta.apply(meta.get-mixin($mixin), $value);
+    }
+  }
+}
+
+@mixin modifier__screen($short-name, $declarations) {
+  @each $key, $value in $screen__values {
+    $new-short-name: #{$key}\:#{$short-name};
+    @include screen__break-point($key) {
+      @include class__build($new-short-name, $declarations);
+    }
+  }
+}
+
+@mixin modifier__set($short-name, $declarations) {
+  @include modifier__screen($short-name, $declarations);
+}
+
+@mixin align-content($value) {
+  align-content: $value;
+}
+
+@mixin align-items($value) {
+  align-items: $value;
+}
+
+@mixin align-self($value) {
+  align-self: $value;
+}
+
+@mixin background($value) {
+  background: $value;
+}
+
+@mixin background-color($value) {
+  background-color: $value;
+}
+
+@mixin background-image($value) {
+  background-image: $value;
+}
+
+@mixin border($value) {
+  border: $value;
+}
+
+@mixin border-top($value) {
+  border-top: $value;
+}
+
+@mixin border-right($value) {
+  border-right: $value;
+}
+
+@mixin border-bottom($value) {
+  border-bottom: $value;
+}
+
+@mixin border-left($value) {
+  border-left: $value;
+}
+
+@mixin border-radius($value) {
+  border-radius: $value;
+}
+
+@mixin border-top-left-radius($value) {
+  border-top-left-radius: $value;
+}
+
+@mixin border-top-right-radius($value) {
+  border-top-right-radius: $value;
+}
+
+@mixin border-bottom-left-radius($value) {
+  border-bottom-left-radius: $value;
+}
+
+@mixin border-bottom-right-radius($value) {
+  border-bottom-right-radius: $value;
+}
+
+@mixin box-shadow($value) {
+  box-shadow: $value;
+}
+
+@mixin color($value) {
+  color: $value;
+}
+
+@mixin display($value) {
+  display: $value;
+}
+
+@mixin flex($value) {
+  flex: $value;
+}
+
+@mixin flex-wrap($value) {
+  flex-wrap: $value;
+}
+
+@mixin flex-direction($value) {
+  flex-direction: $value;
+}
+
+@mixin flex-basis($value) {
+  flex-basis: $value;
+}
+
+@mixin flex-grow($value) {
+  flex-grow: $value;
+}
+
+@mixin flex-grow($value) {
+  flex-grow: $value;
+}
+
+@mixin flex-shrink($value) {
+  flex-shrink: $value;
+}
+
+@mixin flex-basis($value) {
+  flex-basis: $value;
+}
+
+@mixin grid-auto-flow($value) {
+  grid-auto-flow: $value;
+}
+
+@mixin grid-auto-columns($value) {
+  grid-auto-columns: $value;
+}
+
+@mixin grid-auto-rows($value) {
+  grid-auto-rows: $value;
+}
+
+@mixin grid-column($value) {
+  grid-column: $value;
+}
+
+@mixin grid-column-start($value) {
+  grid-column-start: $value;
+}
+
+@mixin grid-column-end($value) {
+  grid-column-end: $value;
+}
+
+@mixin grid-row($value) {
+  grid-row: $value;
+}
+
+@mixin grid-row-start($value) {
+  grid-row-start: $value;
+}
+
+@mixin grid-row-end($value) {
+  grid-row-end: $value;
+}
+
+@mixin grid-template-columns($value) {
+  grid-template-columns: $value;
+}
+
+@mixin grid-template-rows($value) {
+  grid-template-rows: $value;
+}
+
+@mixin grid-auto-fill($width, $fractions: 1fr) {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min($width, 100%), $fractions)
+  );
+}
+
+@mixin grid-auto-fit($width, $fractions: 1fr) {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min($width, 100%), $fractions)
+  );
+}
+
+@mixin grid-column-count($count: 1, $fractions: 1fr) {
+  grid-template-columns: repeat($count, $fractions);
+}
+
+@mixin justify-items($value) {
+  justify-items: $value;
+}
+
+@mixin grid-column($value) {
+  grid-column: $value;
+}
+
+@mixin justify-self($value) {
+  justify-self: $value;
+}
+
+@mixin justify-content($value) {
+  justify-content: $value;
+}
+
+@mixin font-family($value) {
+  font-family: $value;
+}
+
+@mixin font-size($value) {
+  font-size: $value;
+}
+
+@mixin font-weight($value) {
+  font-weight: $value;
+}
+
+@mixin letter-spacing($value) {
+  letter-spacing: $value;
+}
+
+@mixin line-height($value) {
+  line-height: $value;
+}
+
+@mixin order($value) {
+  order: $value;
+}
+
+@mixin position($value) {
+  position: $value;
+}
+
+@mixin position-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin top($value) {
+  top: $value;
+}
+
+@mixin right($value) {
+  right: $value;
+}
+
+@mixin bottom($value) {
+  bottom: $value;
+}
+
+@mixin left($value) {
+  left: $value;
+}
+
+@mixin inset($value) {
+  inset: $value;
+}
+
+@mixin inset-inline-start($value) {
+  inset-inline-start: $value;
+}
+
+@mixin inset-inline-end($value) {
+  inset-inline-end: $value;
+}
+
+@mixin inset-block-start($value) {
+  inset-block-start: $value;
+}
+
+@mixin inset-block-end($value) {
+  inset-block-end: $value;
+}
+
+@mixin z-index($value) {
+  z-index: $value;
+}
+
+@mixin margin($value) {
+  margin: $value;
+}
+
+@mixin margin-top($value) {
+  margin-top: $value;
+}
+
+@mixin margin-right($value) {
+  margin-right: $value;
+}
+
+@mixin margin-bottom($value) {
+  margin-bottom: $value;
+}
+
+@mixin margin-left($value) {
+  margin-left: $value;
+}
+
+@mixin margin-horizontal($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+@mixin margin-vertical($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin margin-inline($value) {
+  margin-inline: $value;
+}
+
+@mixin margin-inline-start($value) {
+  margin-inline-start: $value;
+}
+
+@mixin margin-inline-end($value) {
+  margin-inline-end: $value;
+}
+
+@mixin margin-block($value) {
+  margin-block: $value;
+}
+
+@mixin margin-block-start($value) {
+  margin-block-start: $value;
+}
+
+@mixin margin-block-end($value) {
+  margin-block-end: $value;
+}
+
+@mixin padding($value) {
+  padding: $value;
+}
+
+@mixin padding-top($value) {
+  padding-top: $value;
+}
+
+@mixin padding-right($value) {
+  padding-right: $value;
+}
+
+@mixin padding-bottom($value) {
+  padding-bottom: $value;
+}
+
+@mixin padding-left($value) {
+  padding-left: $value;
+}
+
+@mixin padding-horizontal($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+@mixin padding-vertical($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin padding-inline($value) {
+  padding-inline: $value;
+}
+
+@mixin padding-inline-start($value) {
+  padding-inline-start: $value;
+}
+
+@mixin padding-inline-end($value) {
+  padding-inline-end: $value;
+}
+
+@mixin padding-block($value) {
+  padding-block: $value;
+}
+
+@mixin padding-block-start($value) {
+  padding-block-start: $value;
+}
+
+@mixin padding-block-end($value) {
+  padding-block-end: $value;
+}
+
+@mixin row-gap($value) {
+  row-gap: $value;
+}
+
+@mixin column-gap($value) {
+  column-gap: $value;
+}
+
+@mixin gap($value) {
+  gap: $value;
+}
+
+@mixin text-align($value) {
+  text-align: $value;
+}
+
+@mixin text-overflow($value) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: $value;
+}
+
+@mixin text-transform($value) {
+  text-transform: $value;
+}
+
+@mixin object-fit($value) {
+  object-fit: $value;
+}
+
+@mixin object-position($value) {
+  object-position: $value;
+}
+
+@mixin opacity($value) {
+  opacity: $value;
+}
+
+@mixin overflow($value) {
+  overflow: $value;
+}
+
+@mixin overflow-x($value) {
+  overflow-x: $value;
+}
+
+@mixin overflow-y($value) {
+  overflow-y: $value;
+}
+
+@mixin width($value) {
+  width: $value;
+}
+
+@mixin min-width($value) {
+  min-width: $value;
+}
+
+@mixin max-width($value) {
+  max-width: $value;
+}
+
+@mixin inline-size($value) {
+  inline-size: $value;
+}
+
+@mixin min-inline-size($value) {
+  min-inline-size: $value;
+}
+
+@mixin max-inline-size($value) {
+  max-inline-size: $value;
+}
+
+@mixin height($value) {
+  height: $value;
+}
+
+@mixin min-height($value) {
+  min-height: $value;
+}
+
+@mixin max-height($value) {
+  max-height: $value;
+}
+
+@mixin block-size($value) {
+  block-size: $value;
+}
+
+@mixin min-block-size($value) {
+  min-block-size: $value;
+}
+
+@mixin max-block-size($value) {
+  max-block-size: $value;
+}
+
+@mixin size($value) {
+  width: $value;
+  height: $value;
+}
+
+@mixin space-x($value) {
+  & > *:where(:not(:first-child)) {
+    margin-left: $value;
+  }
+}
+
+@mixin space-y($value) {
+  & > *:where(:not(:first-child)) {
+    margin-top: $value;
+  }
+}
+
+@mixin container {
+  margin-inline: auto;
+  inline-size: 100%;
+  max-inline-size: $container__max-width;
+  padding-inline: $container__padding-inline;
+
+  &--narrow {
+    max-inline-size: $container-narrow__max-width;
+  }
+
+  &--wide {
+    max-inline-size: $container-wide__max-width;
+  }
+
+  &--full-bleed {
+    max-inline-size: 100%;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+@mixin motion__reduce {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin motion__safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin color-scheme__dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+@mixin color-scheme__light {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+}

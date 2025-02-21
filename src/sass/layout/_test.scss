@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.c-my-component {
+  @include class__compose(
+    l-d-flex,
+    l-align-items-center,
+    l-flex-wrap,
+    l-mx-auto,
+    l-my-4,
+    u-bg-primary-400,
+    u-text-neutral-100
+  );
+}

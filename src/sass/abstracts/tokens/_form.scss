@@ -1,0 +1,88 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+@use '../global/size' as *;
+@use '../global/border-radius' as *;
+@use '../global/box-shadow' as *;
+@use '../global/functions' as *;
+@use '../global/outline' as *;
+@use 'body' as *;
+
+// form base styles - start
+$form__font-family: inherit;
+$form__font-weight: font-weight__get(semibold);
+$form__font-size: inherit;
+$form__line-height: 1;
+$form__letter-spacing: 0;
+$form__text-transform: none;
+$form__border: none;
+$form__border-radius: 0;
+$form__padding: 0;
+$form__background-color: transparent;
+$form__color: color-scheme__get(primary, 800);
+$form__layout: grid;
+$form__gap: size__get(6);
+// form base styles - end
+
+// form field base styles - start
+$form-field__layout: grid;
+$form-field__gap: size__get(2);
+// form field base styles - end
+
+// form label - start
+$form-label__font-family: $form__font-family;
+$form-label__font-weight: $form__font-weight;
+$form-label__font-size: $form__font-size;
+$form-label__line-height: $form__line-height;
+$form-label__letter-spacing: $form__letter-spacing;
+$form-label__text-transform: $form__text-transform;
+$form-label__border: none;
+$form-label__border-radius: 0;
+$form-label__padding: 0;
+$form-label__background-color: transparent;
+$form-label__color: color-scheme__get(primary, 800);
+// form label - end
+
+// form control base styles - start
+$form-control__font-family: $form__font-family;
+$form-control__font-weight: $form__font-weight;
+$form-control__text-transform: $form__text-transform;
+// form control base styles - end
+
+// form control default state - start
+$form-control__default-state__border: 2px solid currentColor;
+$form-control__default-state__outline: none;
+$form-control__default-state__outline-offset: none;
+$form-control__default-state__background-color: color-scheme__get(neutral, 100);
+$form-control__default-state__color: color-scheme__get(primary, 300);
+// form control default state - end
+
+// form control focus state - start
+$form-control__focus__border: 2px solid transparent;
+$form-control__focus__outline: $outline-lg__width $outline__style
+  color-scheme__get(accent, 400);
+$form-control__focus__outline-offset: none;
+$form-control__focus__background-color: color-scheme__get(neutral, 100);
+$form-control__focus__color: color-scheme__get(primary, 800);
+// form control focus state - end
+
+// form control default size - start
+$form-control__default-size__border: 2px solid currentColor;
+$form-control__default-size__border-radius: get-border-radius(md);
+$font-control__default-size__font-size: font-size__get(500);
+$form-control__default-size__letter-spacing: $form__letter-spacing;
+$form-control__default-size__line-height: $form__line-height;
+$form-control__default-size__padding: rem-to-em(size__get(3))
+  rem-to-em(size__get(4));
+// form control default size - end
+
+// form control small size - start
+$font-control-sm__font-size: font-size__get(400);
+// form control small size - end
+
+// form control medium size - start
+$font-control-md__font-size: font-size__get(600);
+// form control medium size - end
+
+// form control large size - start
+$font-control-lg__font-size: font-size__get(700);
+// form control large size - end

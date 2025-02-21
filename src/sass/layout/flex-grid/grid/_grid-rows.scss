@@ -1,0 +1,19 @@
+@use '../../../abstracts' as *;
+@use 'grid' as *;
+
+$-options: (
+  can-generate-class: $options-layout__can-generate-class,
+  can-is-component: $options-layout__is-component,
+  can-set-modifier: $options-layout__can-set-modifier,
+  can-set-prefix: $options-layout__can-set-prefix,
+  prefix: $options-layout__prefix,
+);
+$-short-name: 'grid-rows';
+$-declarations: (
+  mixins: (
+    'grid-template-columns',
+  ),
+  values: map__grid-template-values('rows'),
+);
+
+@include class__generate($-short-name, $-declarations, $-options);

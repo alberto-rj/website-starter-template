@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:math';
+
+$screen__values: (
+  'sm': 40em,
+  'md': 48em,
+  'lg': 64em,
+  'xl': 80em,
+  'xl-2': 96em,
+);
+
+@function screen__get($key) {
+  @if map.has-key($screen__values, $key) {
+    @return map.get($screen__values, $key);
+  }
+  @error '$key: There is no value pointed by "#{$key}" in the list';
+}
+
+@mixin screen__break-point($size, $up: true) {
+  $viewport: min-width;
+
+  @if $up !=true {
+    $viewport: 'max-width';
+  }
+
+  @if map.has-key($screen__values, $size) {
+    $screen: map.get($screen__values, $size);
+
+    @media screen and (#{$viewport}: $screen) {
+      @content;
+    }
+  } @else if meta.type-of($size) ==number {
+    @if math.is-unitless($size) {
+      @error '$size: #{$size} has no unit';
+    } @else {
+      @media screen and (#{$viewport}: $size) {
+        @content;
+      }
+    }
+  } @else {
+    @error '$size: There is no value pointed by "#{$size}" in the list';
+  }
+}

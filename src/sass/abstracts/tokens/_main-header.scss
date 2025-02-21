@@ -1,0 +1,11 @@
+@use '../global/color-scheme' as *;
+@use '../global/typography' as *;
+@use '../global/size' as *;
+
+$main-header__background-color: color-scheme__get(primary, 100);
+$main-header__color: color-scheme__get(primary, 700);
+
+$main-header-content__flex-wrap: wrap;
+$main-header-content__justify-content: space-between;
+$main-header-content__align-items: center;
+$main-header-content__min-gap: size__get(4);
